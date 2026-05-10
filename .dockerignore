@@ -1,0 +1,9 @@
+.git
+.github
+.idea
+.vscode
+README.md
+LICENSE
+tests
+*.md
+.DS_Store

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>runbrowser/chromium font coverage</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Liberation Sans", "Noto Sans", sans-serif;
+      background: #fff;
+      color: #111;
+      margin: 0;
+      padding: 32px;
+      max-width: 920px;
+    }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    p.intro { color: #666; font-size: 13px; margin: 0 0 24px; }
+    table { border-collapse: collapse; width: 100%; }
+    td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    td.label { color: #888; font-size: 12px; width: 140px; text-transform: uppercase; letter-spacing: 0.04em; }
+    td.text { font-size: 22px; }
+    td.text[dir="rtl"] { text-align: right; }
+    .footer { margin-top: 24px; font-size: 12px; color: #999; }
+    .footer code { font-family: ui-monospace, Menlo, monospace; }
+  </style>
+</head>
+<body>
+  <h1>runbrowser/chromium font coverage smoke test</h1>
+  <p class="intro">Each row should render legibly. A row that shows <strong>tofu boxes</strong>
+    (▯▯▯▯) means we&rsquo;re missing the font for that script.</p>
+
+  <table>
+    <tr><td class="label">latin (en)</td>      <td class="text" lang="en">The quick brown fox jumps over 13 lazy dogs.</td></tr>
+    <tr><td class="label">latin (fr/de)</td>   <td class="text" lang="fr">Voix ambiguë côté, größere Größe</td></tr>
+    <tr><td class="label">cyrillic (ru)</td>   <td class="text" lang="ru">Съешь ещё этих мягких французских булок</td></tr>
+    <tr><td class="label">greek</td>           <td class="text" lang="el">Καλημέρα κόσμε, γειά σου</td></tr>
+    <tr><td class="label">chinese</td>         <td class="text" lang="zh">你好世界, 中文测试, 简体与繁體</td></tr>
+    <tr><td class="label">japanese</td>        <td class="text" lang="ja">こんにちは, 日本語テスト, 漢字とひらがな</td></tr>
+    <tr><td class="label">korean</td>          <td class="text" lang="ko">안녕하세요, 한국어 테스트</td></tr>
+    <tr><td class="label">arabic</td>          <td class="text" lang="ar" dir="rtl">مرحبا بالعالم, اختبار اللغة العربية</td></tr>
+    <tr><td class="label">hebrew</td>          <td class="text" lang="he" dir="rtl">שלום עולם, בדיקת עברית</td></tr>
+    <tr><td class="label">devanagari (hi)</td> <td class="text" lang="hi">नमस्ते दुनिया, हिन्दी परीक्षण</td></tr>
+    <tr><td class="label">thai</td>            <td class="text" lang="th">สวัสดีชาวโลก, ทดสอบภาษาไทย</td></tr>
+    <tr><td class="label">georgian</td>        <td class="text" lang="ka">გამარჯობა მსოფლიო</td></tr>
+    <tr><td class="label">armenian</td>        <td class="text" lang="hy">Բարեւ աշխարհ</td></tr>
+    <tr><td class="label">emoji</td>           <td class="text">🚀 ✨ 👋 🎨 🐶 🌍 ☕ 🔥 (colored emoji should render in color)</td></tr>
+    <tr><td class="label">math/symbols</td>    <td class="text">∀x ∈ ℝ: x² ≥ 0, α + β = γ, ½ ≈ 0.5, €19/mo</td></tr>
+  </table>
+
+  <p class="footer">
+    Rendered by runbrowser/chromium. See <code>Dockerfile</code> for the apt package list.
+  </p>
+</body>
+</html>

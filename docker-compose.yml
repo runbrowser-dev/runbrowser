@@ -1,0 +1,23 @@
+# Quickstart compose for runbrowser. `docker compose up` and the CDP
+# debugger is reachable at ws://localhost:9222.
+#
+# In production: don't expose 9222 to the public internet. There's no
+# auth on it. Front it with something that handles authentication and
+# rate limiting (or use the runbrowser hosted service at runbrowser.dev).
+
+services:
+  chromium:
+    build: .
+    image: runbrowser/chromium:latest
+    container_name: runbrowser-chromium
+    ports:
+      - "9222:9222"
+    shm_size: '2gb'      # without this, full-page screenshots come out blank
+    init: true           # belt to tini's suspenders for PID 1 reaping
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:9222/json/version > /dev/null || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
