@@ -1,5 +1,7 @@
 # runbrowser/chromium
 
+[![License: MIT](badge)](LICENSE) [![Docker Pulls](badge)](dockerhub) [![Image Size](badge)](dockerhub)
+
 A Chromium image tuned for headless service use. Drop-in for any process that drives a browser via CDP: Playwright, Puppeteer, raw WebSocket, your own gateway.
 
 Available on Docker Hub and GHCR:
